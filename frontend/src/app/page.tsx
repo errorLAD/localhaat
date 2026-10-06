@@ -288,36 +288,36 @@ export default function HomePage() {
     <div className="min-h-screen bg-white text-gray-900 flex flex-col font-sans selection:bg-emerald-100 selection:text-emerald-900">
       {/* MAIN CONTAINER */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 flex-1 space-y-6 sm:space-y-7 w-full">
-        {/* 2. HERO BANNER (Compact, balanced and modern) */}
-        <section className="relative overflow-hidden rounded-[24px] sm:rounded-[30px] bg-[#86d2b6] bg-gradient-to-r from-[#9ae0c8] via-[#85d3b6] to-[#96ddc4] p-5 sm:p-7 lg:p-8 shadow-xs">
+        {/* 2. HERO BANNER (Compact, balanced and modern with lighter mint tone) */}
+        <section className="relative overflow-hidden rounded-[24px] sm:rounded-[30px] bg-[#c8eee0] bg-gradient-to-r from-[#dcf6ec] via-[#c8eee0] to-[#d4f3e7] border border-[#b6e8d4]/70 p-5 sm:p-7 lg:p-8 shadow-xs">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             {/* Left Content */}
             <div className="lg:col-span-7 space-y-2.5">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/75 border border-emerald-600/25 text-emerald-800 text-[11px] font-semibold backdrop-blur-xs">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/85 border border-emerald-600/20 text-emerald-900 text-[11px] font-semibold backdrop-blur-xs">
                 <Sparkles className="w-3 h-3 text-amber-500" />
                 Built for Rural India. Built Around Local Networks.
               </div>
 
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-emerald-900 tracking-tight leading-tight">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-emerald-950 tracking-tight leading-tight">
                 The Digital Backbone for <br />
-                <span className="text-emerald-700">Rural Commerce & Inter-Village Logistics</span>
+                <span className="text-emerald-800">Rural Commerce & Inter-Village Logistics</span>
               </h1>
 
-              <p className="text-emerald-900/85 text-xs sm:text-sm leading-relaxed max-w-xl font-normal">
+              <p className="text-emerald-900/90 text-xs sm:text-sm leading-relaxed max-w-xl font-normal">
                 Local Commerce. Local Logistics. Connected Villages. Connecting customers, businesses, logistics partners, travelling commuters, and village agents through verified custody handovers.
               </p>
 
               {/* Verified Features Pills */}
               <div className="pt-1 flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/90 backdrop-blur-xs text-emerald-800 text-[11px] font-semibold shadow-2xs border border-emerald-100">
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur-xs text-emerald-900 text-[11px] font-semibold shadow-2xs border border-emerald-200/80">
                   <Leaf className="w-3 h-3 text-emerald-600" />
                   Direct Marketplace
                 </span>
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/90 backdrop-blur-xs text-emerald-800 text-[11px] font-semibold shadow-2xs border border-emerald-100">
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur-xs text-emerald-900 text-[11px] font-semibold shadow-2xs border border-emerald-200/80">
                   <ShieldCheck className="w-3 h-3 text-emerald-600" />
                   3-Tier Verified Handover
                 </span>
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/90 backdrop-blur-xs text-emerald-800 text-[11px] font-semibold shadow-2xs border border-emerald-100">
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur-xs text-emerald-900 text-[11px] font-semibold shadow-2xs border border-emerald-200/80">
                   <Truck className="w-3 h-3 text-emerald-600" />
                   Shared Route Delivery
                 </span>
