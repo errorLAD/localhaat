@@ -303,8 +303,8 @@ export default function HomePage() {
                 <span className="text-emerald-800">Rural Commerce & Inter-Village Logistics</span>
               </h1>
 
-              <p className="text-emerald-900/90 text-xs sm:text-sm leading-relaxed max-w-xl font-normal">
-                Local Commerce. Local Logistics. Connected Villages. Connecting customers, businesses, logistics partners, travelling commuters, and village agents through verified custody handovers.
+              <p className="text-emerald-900/90 text-xs sm:text-sm font-normal max-w-none lg:whitespace-nowrap">
+                Local Commerce. Local Logistics. Connected Villages through verified custody handovers.
               </p>
 
               {/* Hero Action CTA Buttons: Shop & Send Parcel (Compact) */}
