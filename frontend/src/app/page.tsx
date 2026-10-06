@@ -307,20 +307,22 @@ export default function HomePage() {
                 Local Commerce. Local Logistics. Connected Villages. Connecting customers, businesses, logistics partners, travelling commuters, and village agents through verified custody handovers.
               </p>
 
-              {/* Verified Features Pills */}
-              <div className="pt-1 flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur-xs text-emerald-900 text-[11px] font-semibold shadow-2xs border border-emerald-200/80">
-                  <Leaf className="w-3 h-3 text-emerald-600" />
-                  Direct Marketplace
-                </span>
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur-xs text-emerald-900 text-[11px] font-semibold shadow-2xs border border-emerald-200/80">
-                  <ShieldCheck className="w-3 h-3 text-emerald-600" />
-                  3-Tier Verified Handover
-                </span>
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur-xs text-emerald-900 text-[11px] font-semibold shadow-2xs border border-emerald-200/80">
-                  <Truck className="w-3 h-3 text-emerald-600" />
-                  Shared Route Delivery
-                </span>
+              {/* Hero Action CTA Buttons: Shop & Send Parcel */}
+              <div className="pt-2 flex flex-wrap items-center gap-3">
+                <Link
+                  href="/marketplace"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white font-bold text-xs sm:text-sm shadow-sm transition-all hover:scale-105 active:scale-95"
+                >
+                  <ShoppingBag className="w-4 h-4" />
+                  <span>Shop</span>
+                </Link>
+                <Link
+                  href="/parcels"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-white hover:bg-emerald-50 text-emerald-950 border border-emerald-300/80 font-bold text-xs sm:text-sm shadow-2xs transition-all hover:scale-105 active:scale-95"
+                >
+                  <Package className="w-4 h-4 text-emerald-700" />
+                  <span>Send Parcel</span>
+                </Link>
               </div>
             </div>
 
