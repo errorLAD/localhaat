@@ -307,20 +307,20 @@ export default function HomePage() {
                 Local Commerce. Local Logistics. Connected Villages. Connecting customers, businesses, logistics partners, travelling commuters, and village agents through verified custody handovers.
               </p>
 
-              {/* Hero Action CTA Buttons: Shop & Send Parcel */}
-              <div className="pt-2 flex flex-wrap items-center gap-3">
+              {/* Hero Action CTA Buttons: Shop & Send Parcel (Compact) */}
+              <div className="pt-1.5 flex flex-wrap items-center gap-2.5">
                 <Link
                   href="/marketplace"
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white font-bold text-xs sm:text-sm shadow-sm transition-all hover:scale-105 active:scale-95"
+                  className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-emerald-800 hover:bg-emerald-900 text-white font-bold text-xs shadow-2xs transition-all hover:scale-102 active:scale-98"
                 >
-                  <ShoppingBag className="w-4 h-4" />
+                  <ShoppingBag className="w-3.5 h-3.5" />
                   <span>Shop</span>
                 </Link>
                 <Link
                   href="/parcels"
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-white hover:bg-emerald-50 text-emerald-950 border border-emerald-300/80 font-bold text-xs sm:text-sm shadow-2xs transition-all hover:scale-105 active:scale-95"
+                  className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-white hover:bg-emerald-50 text-emerald-950 border border-emerald-300 font-bold text-xs shadow-2xs transition-all hover:scale-102 active:scale-98"
                 >
-                  <Package className="w-4 h-4 text-emerald-700" />
+                  <Package className="w-3.5 h-3.5 text-emerald-700" />
                   <span>Send Parcel</span>
                 </Link>
               </div>
