@@ -479,7 +479,7 @@ export default function PartnerDashboardPage() {
                         </Badge>
                       ) : (
                         <Badge className="bg-amber-100 text-amber-900 border-amber-300 font-bold text-[10px]">
-                          💵 Collect Cash (₹{parcel.customerOfferPrice || 150})
+                          💵 Collect Cash (₹{parcel.customerOfferPrice ?? 0})
                         </Badge>
                       )
                     ) : (
@@ -498,7 +498,7 @@ export default function PartnerDashboardPage() {
                 <div className="flex items-center gap-4">
                   <div className="text-right">
                     <span className="text-xs font-extrabold text-emerald-700 block">
-                      ₹{parcel.customerOfferPrice || 150}
+                      ₹{parcel.customerOfferPrice ?? 0}
                     </span>
                     <span className="text-[10px] text-gray-500 font-mono">
                       {parcel.weightKg || 1} kg

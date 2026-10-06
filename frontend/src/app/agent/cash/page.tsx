@@ -31,8 +31,8 @@ export default function CashAndCommissionPage() {
   const [cashAmount, setCashAmount] = useState('380');
   const [recording, setRecording] = useState(false);
 
-  const cashInHand = agent?.cashInHand !== undefined ? agent.cashInHand : 1450;
-  const commission = stats?.totalEarnings || 420;
+  const cashInHand = agent?.cashInHand ?? 0;
+  const commission = stats?.totalEarnings ?? (agent?.totalDelivered ? agent.totalDelivered * (agent.commissionPerDelivery || 10) : 0);
 
   const onRecordCash = async (e: React.FormEvent) => {
     e.preventDefault();

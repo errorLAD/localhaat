@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import { useRouter, usePathname } from 'next/navigation';
+import { api } from '../lib/api';
 import {
   ShoppingBag,
   Package,
@@ -76,6 +77,34 @@ export const Navbar: React.FC = () => {
   const [desktopSearchQuery, setDesktopSearchQuery] = useState('');
   const [mobileSearchQuery, setMobileSearchQuery] = useState('');
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
+
+  // Real live Partner & Agent earnings state
+  const [partnerEarnings, setPartnerEarnings] = useState<number>(0);
+  const [agentCommission, setAgentCommission] = useState<number>(0);
+
+  useEffect(() => {
+    if (user?.role === 'logistics_partner') {
+      api
+        .getPartnerDashboard()
+        .then((res: any) => {
+          if (res?.success) {
+            const bal = res.stats?.totalEarnings ?? res.partner?.walletBalance ?? 0;
+            setPartnerEarnings(bal);
+          }
+        })
+        .catch(() => setPartnerEarnings(0));
+    } else if (user?.role === 'village_agent') {
+      api
+        .getAgentDashboard()
+        .then((res: any) => {
+          if (res?.success) {
+            const comm = res.stats?.totalEarnings ?? res.agent?.walletBalance ?? 0;
+            setAgentCommission(comm);
+          }
+        })
+        .catch(() => setAgentCommission(0));
+    }
+  }, [user?.role, user?._id, pathname]);
 
   // Close mobile drawer on route change
   useEffect(() => {
@@ -248,7 +277,7 @@ export const Navbar: React.FC = () => {
               </Link>
             )}
 
-            {/* PARTNER EARNINGS PILL (Desktop) */}
+            {/* PARTNER EARNINGS PILL (Desktop) - Real Live Wallet Data */}
             {user?.role === 'logistics_partner' && (
               <Link
                 href="/partner/wallet"
@@ -256,18 +285,18 @@ export const Navbar: React.FC = () => {
               >
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 <span>Earnings:</span>
-                <span className="font-mono text-emerald-900 text-xs">₹1,280</span>
+                <span className="font-mono text-emerald-900 text-xs">₹{partnerEarnings}</span>
               </Link>
             )}
 
-            {/* VILLAGE AGENT PILL (Desktop) */}
+            {/* VILLAGE AGENT PILL (Desktop) - Real Live Commission Data */}
             {user?.role === 'village_agent' && (
               <Link
                 href="/agent"
                 className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs font-extrabold hover:bg-amber-100 transition-colors shadow-2xs"
               >
                 <span>Hub Commission:</span>
-                <span className="font-mono text-amber-950 text-xs">₹420</span>
+                <span className="font-mono text-amber-950 text-xs">₹{agentCommission}</span>
               </Link>
             )}
 
