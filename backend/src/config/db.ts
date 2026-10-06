@@ -33,8 +33,13 @@ const cleanStaleLock = (): void => {
   }
 };
 
+let cached = (global as any).mongoose;
+if (!cached) {
+  cached = (global as any).mongoose = { conn: null, promise: null };
+}
+
 export const ensureMongodDaemonRunning = async (): Promise<void> => {
-  if (mongoose.connection.readyState === 1 || mongoose.connection.readyState === 2) {
+  if (mongoose.connection.readyState === 1) {
     return;
   }
 
@@ -43,18 +48,34 @@ export const ensureMongodDaemonRunning = async (): Promise<void> => {
     (!ENV.MONGODB_URI.includes('localhost') && !ENV.MONGODB_URI.includes('127.0.0.1'));
 
   if (isRemote) {
-    try {
-      if (mongoose.connection.readyState !== 0) {
-        await mongoose.disconnect();
-      }
-      await mongoose.connect(ENV.MONGODB_URI, {
-        serverSelectionTimeoutMS: 10000,
-      });
+    if (cached.conn) {
+      return;
+    }
+
+    if (!cached.promise) {
       const maskedUri = ENV.MONGODB_URI.replace(/:([^:@]+)@/, ':****@');
-      console.log(`[Database] Connected successfully to MongoDB Atlas: ${maskedUri}`);
+      console.log(`[Database] Connecting to MongoDB Atlas: ${maskedUri}...`);
+      cached.promise = mongoose
+        .connect(ENV.MONGODB_URI, {
+          serverSelectionTimeoutMS: 10000,
+          connectTimeoutMS: 10000,
+        })
+        .then((m) => {
+          console.log(`[Database] Connected successfully to MongoDB Atlas`);
+          return m;
+        })
+        .catch((err) => {
+          cached.promise = null;
+          console.error(`[Database] Failed to connect to MongoDB Atlas:`, err.message);
+          throw err;
+        });
+    }
+
+    try {
+      cached.conn = await cached.promise;
       return;
     } catch (err: any) {
-      console.error(`[Database] Failed to connect to MongoDB Atlas:`, err.message);
+      cached.promise = null;
       throw err;
     }
   }
