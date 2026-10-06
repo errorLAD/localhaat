@@ -360,7 +360,7 @@ export function printOrderInvoice(order: any, customer?: any) {
           This is an electronically generated valid tax invoice issued under LocalHaat Rural Commerce engine.
         </div>
         <div>
-          Authorized Signatory: <strong>Devendra Pratap (Store Admin)</strong>
+          Authorized Signatory: <strong>Gokul (Store Admin)</strong>
         </div>
       </div>
     </body>

@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
 import { connectDB } from '../config/db.js';
 import {
   User,
@@ -22,10 +23,12 @@ export const seedRichAgents = async () => {
   // 1. Get or create admin for audit references
   let admin = await User.findOne({ role: 'admin' });
   if (!admin) {
+    const adminHashedPassword = await bcrypt.hash('gokul@1996', 10);
     admin = await User.create({
-      name: 'Devendra Pratap (Admin)',
+      name: 'Gokul (Admin)',
       phone: '9999900001',
-      email: 'admin@localhaat.in',
+      email: 'gokul@localhaat.in',
+      password: adminHashedPassword,
       role: 'admin',
       isActive: true,
       kycStatus: 'verified',

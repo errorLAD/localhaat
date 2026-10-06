@@ -12,6 +12,7 @@ backend/dist/
 build/
 backend/build/
 .mongo-data/
+*.tsbuildinfo
 
 # Environment files & secrets
 .env

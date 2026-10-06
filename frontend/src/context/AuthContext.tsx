@@ -28,7 +28,7 @@ const DEMO_PHONE_MAP: Record<UserRole, { phone: string; name: string }> = {
   logistics_partner: { phone: '9999900003', name: 'Balwant Singh (Logistics)' },
   village_agent: { phone: '9999900004', name: 'Sudhir Kumar (Village Agent)' },
   business: { phone: '9999900002', name: 'Rameshwar Mahato (Artisan/Farmer)' },
-  admin: { phone: '9999900001', name: 'Devendra Pratap (Admin)' },
+  admin: { phone: '9999900001', name: 'Gokul (Admin)' },
 };
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {

@@ -18,7 +18,7 @@ export const seedStoreDefaults = async () => {
     await StoreSettings.create({
       storeName: 'LocalHaat Rural Direct Store',
       storeTagline: 'Authentic Village Haat Commerce Delivered Direct',
-      storeEmail: 'admin@localhaat.in',
+      storeEmail: 'gokul@localhaat.in',
       storePhone: '+91 9999900001',
       address: {
         street: 'Main Haat Central Facility, GT Road',
@@ -178,7 +178,7 @@ export const seedStoreDefaults = async () => {
         previousStock: 0,
         newStock: p.stock || 25,
         reason: 'Initial Catalog Inventory Intake',
-        operatorName: 'Devendra Pratap (Admin)',
+        operatorName: 'Gokul (Admin)',
       });
     }
     console.log('[Store Seed] Initialized stock inventory logs');

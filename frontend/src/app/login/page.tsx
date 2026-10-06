@@ -25,9 +25,16 @@ export default function LoginPage() {
   const router = useRouter();
   const { user, login, requestOtp, loginWithOtp, logout, isLoading } = useAuth();
 
+  const [isAdminLoginNotice, setIsAdminLoginNotice] = useState(false);
+
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.location.search.includes('logout=true')) {
-      logout();
+    if (typeof window !== 'undefined') {
+      if (window.location.search.includes('logout=true')) {
+        logout();
+      }
+      if (window.location.search.includes('role=admin')) {
+        setIsAdminLoginNotice(true);
+      }
     }
   }, []);
 
@@ -49,6 +56,17 @@ export default function LoginPage() {
   const [forgotModal, setForgotModal] = useState(false);
 
   const handleRoleRedirect = (role: string) => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const redirectTarget = params.get('redirect');
+      if (redirectTarget) {
+        if (!redirectTarget.startsWith('/admin') || role === 'admin') {
+          router.push(redirectTarget);
+          return;
+        }
+      }
+    }
+
     switch (role) {
       case 'logistics_partner':
         router.push('/partner/dashboard');
@@ -171,6 +189,17 @@ export default function LoginPage() {
           </CardHeader>
 
           <CardContent className="space-y-4">
+            {isAdminLoginNotice && (
+              <div className="p-3.5 bg-purple-50 border border-purple-200 rounded-xl flex items-start gap-2.5 text-xs text-purple-900 shadow-2xs">
+                <Lock className="w-4 h-4 text-purple-700 shrink-0 mt-0.5" />
+                <div>
+                  <div className="font-bold text-purple-950">Administrator Sign In Required</div>
+                  <div className="text-[11px] text-purple-800 mt-0.5 leading-relaxed">
+                    Access to the Platform Control Center is restricted to Administrators. Please enter your administrator credentials (e.g. <strong>gokul@localhaat.in</strong>) to continue.
+                  </div>
+                </div>
+              </div>
+            )}
             {user && (
               <div className="p-3.5 bg-blue-50 border border-blue-200 rounded-xl flex items-center justify-between text-xs">
                 <div className="space-y-0.5">

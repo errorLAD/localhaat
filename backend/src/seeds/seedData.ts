@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
 import { connectDB, disconnectDB } from '../config/db.js';
 import {
   User,
@@ -69,10 +70,12 @@ export const seedDatabase = async (shouldDisconnect: boolean = true) => {
     console.log('[Seed] Creating 5 Core Users for all portals...');
 
     // 1. Admin (Store Owner & Company Catalog Controller)
+    const adminHashedPassword = await bcrypt.hash('gokul@1996', 10);
     const adminUser = await User.create({
-      name: 'Devendra Pratap (Admin)',
+      name: 'Gokul (Admin)',
       phone: '9999900001',
-      email: 'admin@localhaat.in',
+      email: 'gokul@localhaat.in',
+      password: adminHashedPassword,
       role: 'admin',
       isActive: true,
       kycStatus: 'verified',
@@ -1949,7 +1952,7 @@ export const seedDatabase = async (shouldDisconnect: boolean = true) => {
     console.log(`- Products:       ${products.length} (All owned by Company Admin)`);
     console.log('----------------------------------------------------');
     console.log('DEMO ACCOUNTS READY (Use any phone + OTP "123456"):');
-    console.log('1. Admin (Store Owner): Phone: 9999900001 (Devendra Pratap)');
+    console.log('1. Admin (Store Owner): Phone: 9999900001 | Email: gokul@localhaat.in | Pass: gokul@1996 (Gokul)');
     console.log('2. Business / Supplier: Phone: 9999900002 (Rameshwar Mahato)');
     console.log('3. Logistics Partner:   Phone: 9999900003 (Balwant Singh)');
     console.log('4. Village Agent:       Phone: 9999900004 (Sudhir Kumar)');

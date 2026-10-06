@@ -819,10 +819,10 @@ export const AdminSidebar: React.FC = () => {
               COMPANY STORE ADMIN
             </div>
             <div className="font-bold text-gray-900 truncate mt-0.5">
-              {user?.name || 'Devendra Pratap (Admin)'}
+              {user?.name || 'Gokul (Admin)'}
             </div>
             <div className="text-[11px] text-gray-500 font-mono mt-0.5">
-              {user?.phone || '9999900001'}
+              {user?.email || user?.phone || 'gokul@localhaat.in'}
             </div>
           </div>
         </div>
