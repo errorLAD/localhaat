@@ -38,6 +38,27 @@ export const ensureMongodDaemonRunning = async (): Promise<void> => {
     return;
   }
 
+  const isRemote =
+    ENV.MONGODB_URI.startsWith('mongodb+srv://') ||
+    (!ENV.MONGODB_URI.includes('localhost') && !ENV.MONGODB_URI.includes('127.0.0.1'));
+
+  if (isRemote) {
+    try {
+      if (mongoose.connection.readyState !== 0) {
+        await mongoose.disconnect();
+      }
+      await mongoose.connect(ENV.MONGODB_URI, {
+        serverSelectionTimeoutMS: 10000,
+      });
+      const maskedUri = ENV.MONGODB_URI.replace(/:([^:@]+)@/, ':****@');
+      console.log(`[Database] Connected successfully to MongoDB Atlas: ${maskedUri}`);
+      return;
+    } catch (err: any) {
+      console.error(`[Database] Failed to connect to MongoDB Atlas:`, err.message);
+      throw err;
+    }
+  }
+
   // 1. First check if persistent MongoDB is already running on port 27017
   try {
     if (mongoose.connection.readyState !== 0) {
