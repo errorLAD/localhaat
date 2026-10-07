@@ -454,6 +454,29 @@ export const Navbar: React.FC = () => {
               </div>
             )}
 
+            {/* MOBILE DRONE DELIVERY BUTTON (Near Hamburger Menu) */}
+            <Link
+              href="/drone-delivery"
+              className={`lg:hidden relative inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all shadow-2xs group shrink-0 min-h-[40px] ${
+                pathname === '/drone-delivery'
+                  ? 'bg-emerald-800 text-white ring-2 ring-emerald-400 shadow-xs'
+                  : 'bg-primary-700 hover:bg-primary-800 text-white hover:shadow-xs'
+              }`}
+              aria-label="Drone Delivery"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-300 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400"></span>
+              </span>
+              <DroneIcon className="w-3.5 h-3.5 text-amber-300 group-hover:scale-110 transition-transform shrink-0" />
+              <span className="text-[11px] sm:text-xs">
+                Drone<span className="hidden sm:inline"> Delivery</span>
+              </span>
+              <span className="hidden sm:inline-block text-[9px] font-extrabold uppercase bg-amber-400 text-gray-950 px-1.5 py-0.5 rounded tracking-wider font-mono">
+                Phase 2
+              </span>
+            </Link>
+
             {/* MOBILE HAMBURGER BUTTON (Min 44x44 touch target) */}
             <button
               type="button"
@@ -696,7 +719,11 @@ export const Navbar: React.FC = () => {
               <Link
                 href="/drone-delivery"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between px-3 py-2.5 rounded-xl text-gray-700 hover:bg-gray-50 transition min-h-[44px]"
+                className={`flex items-center justify-between px-3 py-2.5 rounded-xl transition min-h-[44px] ${
+                  pathname === '/drone-delivery'
+                    ? 'bg-primary-50 text-primary-700 font-bold'
+                    : 'text-gray-700 hover:bg-gray-50'
+                }`}
               >
                 <div className="flex items-center gap-3">
                   <DroneIcon className="w-4 h-4 text-emerald-700" />
